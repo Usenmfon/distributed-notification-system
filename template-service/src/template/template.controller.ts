@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { TemplateService } from './template.service';
-import { Template_Definition_Dto } from './dtos';
+import { Template_Definition_Dto, Template_Version_Dto } from './dtos';
 
 @Controller('api/v1/templates')
 export class TemplateController {
@@ -13,5 +13,10 @@ export class TemplateController {
     return this.template_service.create_template_definition(
       template_definition,
     );
+  }
+
+  @Post('/:template_id/versions')
+  create_template_version(@Body() template_version: Template_Version_Dto) {
+    return this.template_service.create_template_version(template_version);
   }
 }
