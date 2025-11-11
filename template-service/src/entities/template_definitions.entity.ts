@@ -22,10 +22,10 @@ export class Template_Definition {
   @Column('text')
   description: string;
 
-  @CreateDateColumn('timestamp with timezone')
+  @CreateDateColumn({ type: 'timestamp with time zone' })
   created_at: Date;
 
-  @UpdateDateColumn('timestamp with timezone')
+  @UpdateDateColumn({ type: 'timestamp with time zone' })
   updated_at: Date;
 
   @OneToMany(() => Template_Version, (version) => version.definition)
