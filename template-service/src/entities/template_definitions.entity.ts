@@ -5,15 +5,17 @@ import {
   OneToMany,
   UpdateDateColumn,
   CreateDateColumn,
+  Unique,
 } from 'typeorm';
 import { Template_Version } from './template_versions.entity';
 
 @Entity({ name: 'template_definitions' })
+@Unique(['template_code', 'notification_type'])
 export class Template_Definition {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true })
+  @Column('varchar')
   template_code: string;
 
   @Column('varchar')
