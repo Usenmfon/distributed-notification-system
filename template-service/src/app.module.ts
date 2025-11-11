@@ -9,13 +9,12 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      url: process.env.DB_URL,
       entities: [],
-      synchronize: false,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
