@@ -1,10 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Template_Definition } from '../entities/template_definitions.entity';
 import { Template_Version } from '../entities/template_versions.entity';
 import { Template_Definition_Dto } from './dtos';
-import { BadRequestException } from '@nestjs/common';
 
 @Injectable()
 export class TemplateService {
@@ -39,7 +42,13 @@ export class TemplateService {
 
       return this.template_definition.save(new_template_definition);
     } catch (error) {
-      console.log(error.message);
+      if (error instanceof BadRequestException) {
+        throw error;
+      }
+      if (error.code === '23505') {
+        throw new BadRequestException('Template code already exists');
+      }
+      throw new InternalServerErrorException('Something went wrong');
     }
   }
 }
