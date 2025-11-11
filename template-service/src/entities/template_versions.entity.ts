@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { TemplateDefinition } from './template_definitions.entity';
+import { Template_Definition } from './template_definitions.entity';
 
 @Entity({ name: 'template_versions' })
-export class TemplateVersion {
+export class Template_Version {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ManyToOne(
-    () => TemplateDefinition,
+    () => Template_Definition,
     (template_definition) => template_definition.versions,
   )
-  definition: TemplateDefinition;
+  definition: Template_Definition;
 
   @Column('int')
   version: number;

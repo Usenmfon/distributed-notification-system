@@ -6,10 +6,10 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { TemplateVersion } from './template_versions.entity';
+import { Template_Version } from './template_versions.entity';
 
 @Entity({ name: 'template_definitions' })
-export class TemplateDefinition {
+export class Template_Definition {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -28,6 +28,6 @@ export class TemplateDefinition {
   @UpdateDateColumn('timestamp with timezone')
   updated_at: Date;
 
-  @OneToMany(() => TemplateVersion, (version) => version.definition)
-  versions: TemplateVersion[];
+  @OneToMany(() => Template_Version, (version) => version.definition)
+  versions: Template_Version[];
 }
