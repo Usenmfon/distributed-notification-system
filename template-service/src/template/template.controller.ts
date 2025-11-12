@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { TemplateService } from './template.service';
 import { Template_Definition_Dto, Template_Version_Dto } from './dtos';
 import { Active_Template_Query_Dto } from './dtos/active_template.dto';
@@ -29,5 +37,10 @@ export class TemplateController {
   @Post('/:template_id/versions')
   create_template_version(@Body() template_version: Template_Version_Dto) {
     return this.template_service.create_template_version(template_version);
+  }
+
+  @Patch('/versions/:version_id/activate')
+  activate_version(@Param('version_id') version_id: string) {
+    return this.template_service.activate_version(version_id);
   }
 }
