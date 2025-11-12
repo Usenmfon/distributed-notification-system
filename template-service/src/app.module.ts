@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TemplateModule } from './template/template.module';
 import { Template_Definition } from './template/entities/template_definitions.entity';
 import { Template_Version } from './template/entities/template_versions.entity';
+import { HealthCheckModule } from './health_check/health_check.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { Template_Version } from './template/entities/template_versions.entity';
       synchronize: true,
     }),
     TemplateModule,
+    HealthCheckModule,
   ],
   controllers: [AppController],
   providers: [AppService],
