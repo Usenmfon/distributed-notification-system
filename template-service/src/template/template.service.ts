@@ -176,6 +176,11 @@ export class TemplateService {
       if (error instanceof BadRequestException) {
         throw error;
       }
+
+      if (error instanceof NotFoundException) {
+        throw error;
+      }
+
       throw new InternalServerErrorException('Something went wrong');
     }
   }
