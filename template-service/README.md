@@ -28,12 +28,12 @@ To get this project up and running on your local machine, follow these steps.
     ```
 2.  **Install Dependencies**:
     ```bash
-    npm install
+    pnpm install
     ```
 3.  **Run Migrations (if applicable) and Start the Application**:
     This project uses `synchronize: true` in `TypeOrmModule.forRoot` for development, which automatically syncs entities to the database schema. For production, consider using explicit migrations.
     ```bash
-    npm run start:dev
+    pnpm run start:dev
     ```
     The application will typically run on `http://localhost:3000` or the port specified in your environment variables.
 
