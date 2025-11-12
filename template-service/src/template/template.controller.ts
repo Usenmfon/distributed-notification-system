@@ -1,10 +1,15 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TemplateService } from './template.service';
 import { Template_Definition_Dto, Template_Version_Dto } from './dtos';
 
 @Controller('api/v1/templates')
 export class TemplateController {
   constructor(private readonly template_service: TemplateService) {}
+
+  @Get()
+  get_all_template_definitions() {
+    return this.template_service.get_all_template_definitions();
+  }
 
   @Post()
   create_template_definition(
