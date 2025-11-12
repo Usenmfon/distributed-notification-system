@@ -21,6 +21,6 @@ export class Template_Version {
   @Column('jsonb')
   content: object;
 
-  @Column('boolean', { default: true })
+  @Column('boolean', { default: false })
   is_active: boolean;
 }
