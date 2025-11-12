@@ -130,4 +130,14 @@ export class TemplateService {
       throw new InternalServerErrorException('Something went wrong');
     }
   }
+
+  async get_all_template_definitions() {
+    const template_definitions = await this.template_definition.find();
+
+    if (!template_definitions || template_definitions.length === 0) {
+      return [];
+    }
+
+    return template_definitions;
+  }
 }
