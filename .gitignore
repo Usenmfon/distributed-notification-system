@@ -7,12 +7,15 @@ vendor/
 *.log
 /.env.test
 .env.local
+.
 
 # Ignore build outputs
-dist/
+dist/git commit -m "feat(user-service): add User entity and PostgreSQL integration"
+
 build/
 storage/
 bootstrap/cache/
+coverage/
 
 # Ignore IDE config
 .vscode/
