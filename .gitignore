@@ -10,7 +10,7 @@ vendor/
 .
 
 # Ignore build outputs
-dist/git commit -m "feat(user-service): add User entity and PostgreSQL integration"
+dist/
 
 build/
 storage/
