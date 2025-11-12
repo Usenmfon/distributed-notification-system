@@ -6,8 +6,8 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, EntityManager } from 'typeorm';
-import { Template_Definition } from '../entities/template_definitions.entity';
-import { Template_Version } from '../entities/template_versions.entity';
+import { Template_Definition } from './entities/template_definitions.entity';
+import { Template_Version } from './entities/template_versions.entity';
 import { Template_Definition_Dto, Template_Version_Dto } from './dtos';
 import { Active_Template_Query_Dto } from './dtos/active_template.dto';
 

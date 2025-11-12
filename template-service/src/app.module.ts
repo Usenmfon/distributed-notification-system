@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { TemplateModule } from './template/template.module';
-import { Template_Definition } from './entities/template_definitions.entity';
-import { Template_Version } from './entities/template_versions.entity';
+import { Template_Definition } from './template/entities/template_definitions.entity';
+import { Template_Version } from './template/entities/template_versions.entity';
 
 @Module({
   imports: [
