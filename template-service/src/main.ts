@@ -14,7 +14,7 @@ async function bootstrap() {
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, documentFactory);
   console.log('Connected to the database successfully...');
-  console.log(`Access the docs here: http://localhost:${PORT}/api/docs`);
+  console.log(`Access the docs here: http://localhost:${process.env.PORT ?? 3000}/api/docs`);
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
