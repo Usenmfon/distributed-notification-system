@@ -17,8 +17,12 @@ class NotificationController extends Controller
         $request_id = $data['request_id'];
         $cacheKey = "req:{$request_id}:notification_id";
 
+        $bearerToken = request()->bearerToken();
+
         try{
-        $userInfo = Http::timeout(3)->get('http://user-service:port/users/' . $data['user_id'])->json();
+        $userInfo = Http::withToken($bearerToken)
+            ->get('http://user-service:3001/api/v1/users/' . $data['user_id'])
+            ->json();
 
         if (!$userInfo['success']) {
             return response()->json([
