@@ -9,7 +9,7 @@ vendor/
 .env.local
 .
 
-# Ignore build outputs
+# Ignore build 
 dist/
 
 build/
