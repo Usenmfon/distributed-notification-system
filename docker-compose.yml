@@ -116,27 +116,25 @@ services:
       SMTP_PASS: zuunqtxozivvqfhm
       PORT: 3000
       NODE_ENV: development
-
-    
   
-  # template-service:
-  #   build:
-  #     context: ./template-service
-  #   container_name: template-service
-  #   restart: unless-stopped
-  #   working_dir: /app
-  #   ports:
-  #     - "4002:3000" # HOST:CONTAINER
-  #   networks:
-  #     - notification-network
-  #   environment:
-  #     DB_HOST: postgres
-  #     DB_PORT: 5432
-  #     DB_USERNAME: user
-  #     DB_PASSWORD: pass
-  #     DB_NAME: template_service
-  #     PORT: 3000
-  #     NODE_ENV: development
+  template-service:
+    build:
+      context: ./template-service
+    container_name: template-service
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - "4003:3003" # HOST:CONTAINER
+    networks:
+      - notification-network
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: user
+      DB_PASSWORD: pass
+      DB_NAME: template_service
+      PORT: 3003
+      NODE_ENV: development
 
 networks:
   notification-network:
