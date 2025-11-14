@@ -1,29 +1,21 @@
-FROM node:18-alpine AS builder
-
+FROM node:alpine
 WORKDIR /app
 
+# Install pnpm globally
 RUN npm install -g pnpm
 
-COPY package.json pnpm-lock.yaml ./
+# Copy package files first to leverage caching
+COPY package.json pnpm-lock.yaml tsconfig.json nest-cli.json ./
 
-RUN pnpm install --frozen-lockfile
+# Install dependencies including @nestjs/cli (which should be in package.json devDependencies)
+RUN pnpm install --include=dev
 
+# Copy all source files
 COPY . .
-
-RUN pnpm run build
-
-FROM node:18-alpine
-
-WORKDIR /app
-
-RUN npm install -g pnpm
-
-COPY package.json pnpm-lock.yaml ./
-
-RUN pnpm install --prod --frozen-lockfile
-
-COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
-CMD ["node", "dist/main"]
+# Use local CLI from node_modules with pnpm run build script
+RUN pnpm run build
+
+CMD ["pnpm", "run", "start:prod"]
