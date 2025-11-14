@@ -1,0 +1,24 @@
+# Root-level ignores
+node_modules/
+vendor/
+.env
+# .env.*
+.DS_Store
+*.log
+/.env.test
+.env.local
+.
+
+# Ignore build outputs
+dist/
+dist
+
+build/
+storage/
+bootstrap/cache/
+coverage/
+
+# Ignore IDE config
+.vscode/
+.idea/
+
