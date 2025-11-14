@@ -11,7 +11,6 @@ vendor/
 
 # Ignore build outputs
 dist/
-dist
 
 build/
 storage/
